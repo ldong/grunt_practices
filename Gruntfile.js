@@ -89,6 +89,12 @@ module.exports = function(grunt){
                 arr: [1,2,3],
                 bool: false
             }
+        },
+
+        fnList: {
+            target: {
+                src: 'src/*.js'
+            }
         }
     });
 
@@ -100,6 +106,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
     grunt.loadNpmTasks('grunt-contrib-clean');
+
+    grunt.loadTasks('/Users/ldong/temp/project/tasks');
 
     grunt.registerTask('default', ['coffee', 'jshint', 'concat', 'uglify']);
     grunt.registerTask('reboot', ['clean', 'default']);
