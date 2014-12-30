@@ -1,6 +1,11 @@
 module.exports = function(grunt){
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
+        nameStr: grunt.template.process('My name is <%= name %>', {
+            data: {
+                name: 'Lin'
+            }
+        }),
 
         uglify: {
             options: {
@@ -8,8 +13,9 @@ module.exports = function(grunt){
                 compress: true,
                 sourceMap: 'dist/application.map',
                 banner: '/* <%= pkg.author %> | <%= pkg.license %> '
-                    + "| <%= grunt.template.today('mm/dd/yyyy')%> */"
-                    + '\n'
+                // + "| <%= grunt.template.date(new Date(100), 'mm/dd/yyyy')%> */"
+                + "| <%= grunt.template.today('mm/dd/yyyy')%> by <%= nameStr%>*/"
+                + '\n'
             },
 
             target: {
