@@ -26,8 +26,18 @@ module.exports = function(grunt){
             target: {
                 src: 'src/*.js'
             }
-        }
+        },
 
+        'concat': {
+            options:{
+                seperator: ';',
+                banner: '/* Lin Dong 2014 */\n'
+            },
+            target: {
+                src: ['src/application.js', 'src/util.js'],
+                dest: 'dest/application.js'
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
