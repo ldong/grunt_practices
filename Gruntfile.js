@@ -7,6 +7,7 @@ module.exports = function(grunt){
                 sourceMap: 'dest/application.map',
                 banner: '/* Lin Dong 2014 */\n'
             },
+
             target: {
                 src: 'src/application.js',
                 dest: 'dest/application.min.js'
@@ -16,8 +17,22 @@ module.exports = function(grunt){
                 src: 'src/util.js',
                 dest: 'dest/util.min.js'
             }
+        },
+        'jshint': {
+            options: {
+                eqeqeq: true,
+                curly: true,
+                undef: true,
+                unused: true
+            },
+
+            target: {
+                src: 'src/*.js'
+            }
         }
+
     });
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 };
