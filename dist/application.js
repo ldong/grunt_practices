@@ -1,4 +1,4 @@
-/* Lin Dong 2014 */
+/*  |  */
 var myModule = (function(){
 
     function sayHi(name){

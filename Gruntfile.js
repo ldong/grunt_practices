@@ -1,11 +1,15 @@
 module.exports = function(grunt){
     grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+
         uglify: {
             options: {
                 mangle: true,
                 compress: true,
                 sourceMap: 'dist/application.map',
-                banner: '/* Lin Dong 2014 */\n'
+                banner: '/* <%= pkg.author %> | <%= pkg.license %> '
+                    + "| <%= grunt.template.today('mm/dd/yyyy')%> */"
+                    + '\n'
             },
 
             target: {
@@ -31,7 +35,7 @@ module.exports = function(grunt){
         concat: {
             options:{
                 seperator: ';',
-                banner: '/* Lin Dong 2014 */\n'
+                banner: '/* <% pkg.author %> | <% pkg.license %> */\n'
             },
             target: {
                 src: ['src/application.js', 'src/util.js'],
