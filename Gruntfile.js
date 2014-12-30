@@ -18,14 +18,11 @@ module.exports = function(grunt){
                 dest: 'dest/util.min.js'
             }
         },
+
         'jshint': {
             options: {
-                eqeqeq: true,
-                curly: true,
-                undef: true,
-                unused: true
+                jshintrc: '.jshintrc'
             },
-
             target: {
                 src: 'src/*.js'
             }
@@ -35,4 +32,5 @@ module.exports = function(grunt){
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-concat');
 };

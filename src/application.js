@@ -1,6 +1,6 @@
 var myModule = (function(){
 
-    function saiHi(name){
+    function sayHi(name){
         return 'Hi, '+name+' !';
     }
 
