@@ -63,11 +63,12 @@ module.exports = function(grunt){
         },
 
         nodeunit: {
-            target: {
-                src: 'test/*_test.js'
-            }
-        }
+            target:'test/*_test.js'
+        },
 
+        clean: {
+            target:  ['dist', 'lib']
+        }
     });
 
 
@@ -77,7 +78,9 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-nodeunit');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask('default', ['coffee', 'jshint', 'concat', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+    grunt.registerTask('reboot', ['clean', 'default']);
     grunt.registerTask('start', ['watch']);
 };
