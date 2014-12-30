@@ -1,6 +1,6 @@
 module.exports = function(grunt){
     grunt.initConfig({
-        'uglify': {
+        uglify: {
             options: {
                 mangle: true,
                 compress: true,
@@ -19,7 +19,7 @@ module.exports = function(grunt){
             }
         },
 
-        'jshint': {
+        jshint: {
             options: {
                 jshintrc: '.jshintrc'
             },
@@ -28,7 +28,7 @@ module.exports = function(grunt){
             }
         },
 
-        'concat': {
+        concat: {
             options:{
                 seperator: ';',
                 banner: '/* Lin Dong 2014 */\n'
@@ -39,16 +39,16 @@ module.exports = function(grunt){
             }
         },
 
-        'watch': {
+        watch: {
             scripts: {
                 files: ['src/*.js'],
                 tasks: ['jshint']
             }
         },
 
-        'coffee': {
+        coffee: {
             options: {
-                bare: true,
+                bare: false,
                 join: false,
                 seperator: ';'
             },
@@ -60,8 +60,13 @@ module.exports = function(grunt){
                 dest: 'lib/',
                 ext: '.js'
             }
-        }
+        },
 
+        nodeunit: {
+            target: {
+                src: 'test/*_test.js'
+            }
+        }
 
     });
 
@@ -71,7 +76,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-coffee');
+    grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
-    grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
-    grunt.registerTask('restart', ['watch']);
+    grunt.registerTask('default', ['coffee', 'jshint', 'concat', 'uglify']);
+    grunt.registerTask('start', ['watch']);
 };
