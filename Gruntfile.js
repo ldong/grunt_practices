@@ -4,18 +4,18 @@ module.exports = function(grunt){
             options: {
                 mangle: true,
                 compress: true,
-                sourceMap: 'dest/application.map',
+                sourceMap: 'dist/application.map',
                 banner: '/* Lin Dong 2014 */\n'
             },
 
             target: {
-                src: 'src/application.js',
-                dest: 'dest/application.min.js'
+                src: 'dist/application.js',
+                dest: 'dist/application.min.js'
             },
 
             util: {
                 src: 'src/util.js',
-                dest: 'dest/util.min.js'
+                dest: 'dist/util.min.js'
             }
         },
 
@@ -35,12 +35,16 @@ module.exports = function(grunt){
             },
             target: {
                 src: ['src/application.js', 'src/util.js'],
-                dest: 'dest/application.js'
+                dest: 'dist/application.js'
             }
         }
     });
 
+
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-concat');
+
+    grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+    grunt.registerTask('restart', []);
 };
